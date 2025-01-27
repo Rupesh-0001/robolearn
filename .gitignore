@@ -1,0 +1,6 @@
+node_modules/
+.env
+.DS_Store
+my-app/node_modules/
+my-app/.env
+my-app/.DS_Store
