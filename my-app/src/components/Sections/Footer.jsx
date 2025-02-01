@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-scroll";
 // Assets
-import LogoImg from "../../assets/svg/Logo";
+import LightLogoImg from "../../assets/svg/LightLogo";
 
 export default function Contact() {
 
@@ -16,10 +16,10 @@ export default function Contact() {
         <div className="container">
           <InnerWrapper className="flexSpaceCenter" style={{ padding: "30px 0" }}>
             <Link className="flexCenter animate pointer" to="home" smooth={true} offset={-80}>
-              <LogoImg />
-              <h1 className="font15 extraBold whiteColor" style={{ marginLeft: "15px" }}>
+              <LightLogoImg />
+              {/* <h1 className="font15 extraBold whiteColor" style={{ marginLeft: "15px" }}>
                 RoboLearn
-              </h1>
+              </h1> */}
             </Link>
             <StyleP className="whiteColor font13">
               © {getCurrentYear()} - <span className="purpleColor font13">RoboLearn</span> All Right Reserved

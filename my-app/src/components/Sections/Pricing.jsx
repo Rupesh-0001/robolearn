@@ -19,25 +19,9 @@ export default function Pricing() {
           <TablesWrapper className="flexSpaceNull">
             <TableBox>
               <PricingTable
-                icon="roller"
-                price="$29,99/mo"
-                title="Starter"
-                text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor."
-                offers={[
-                  { name: "Product Offer", cheked: true },
-                  { name: "Offer", cheked: true },
-                  { name: "Product Offer #2", cheked: false },
-                  { name: "Product", cheked: false },
-                  { name: "Product Offer", cheked: false },
-                ]}
-                action={() => alert("clicked")}
-              />
-            </TableBox>
-            <TableBox>
-              <PricingTable
                 icon="monitor"
-                price="$49,99/mo"
-                title="Basic"
+                price="₹4,999/mo"
+                title="Zero to 100"
                 text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor."
                 offers={[
                   { name: "Product Offer", cheked: true },
@@ -46,15 +30,16 @@ export default function Pricing() {
                   { name: "Product", cheked: true },
                   { name: "Product Offer", cheked: false },
                 ]}
-                action={() => alert("clicked")}
+                action={() => alert("RazorPay will be here")}
               />
             </TableBox>
             <TableBox>
               <PricingTable
                 icon="browser"
-                price="$59,99/mo"
-                title="Golden"
+                price="₹5,999/mo"
+                title="100 to Hero"
                 text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor."
+
                 offers={[
                   { name: "Product Offer", cheked: true },
                   { name: "Offer", cheked: true },
@@ -62,7 +47,7 @@ export default function Pricing() {
                   { name: "Product", cheked: true },
                   { name: "Product Offer", cheked: true },
                 ]}
-                action={() => alert("clicked")}
+                action={() => alert("RazorPay will be here")}
               />
             </TableBox>
           </TablesWrapper>
