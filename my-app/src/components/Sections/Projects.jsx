@@ -16,7 +16,7 @@ import AddImage2 from "../../assets/img/add/add2.png";
 export default function Projects() {
   return (
     <Wrapper id="projects">
-      <div className="whiteBg">
+      <div className="lightBg" style={{ padding: "30px 0" }}>
         <div className="container">
           <HeaderInfo>
             <h1 className="font40 extraBold">Our Way Of Shaping Future</h1>

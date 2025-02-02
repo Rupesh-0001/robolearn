@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import styled from "styled-components";
 // Assets
 import ContactImg1 from "../../assets/img/svgs/study.svg";
@@ -6,6 +6,53 @@ import ContactImg2 from "../../assets/img/svgs/tutorial.svg";
 import ContactImg3 from "../../assets/img/svgs/working.svg";
 
 export default function Contact() {
+  const [formData, setFormData] = useState({
+    fname: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+  const formRef = useRef(null);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    // Replace with your Google Sheet Web App URL
+    const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbxOpR6B3iMLuWZ1QgLhKiI6pRkGfnMT9y0jpHnfYo4jlbY2Lf6SK7AXdRaNU0N6C-Kz/exec';
+    
+    try {
+      const response = await fetch(GOOGLE_SHEET_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      });
+      
+      if (response.ok) {
+        alert('Message sent successfully!');
+        setFormData({ fname: '', email: '', subject: '', message: '' });
+      } else {
+        alert('Failed to send message. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('An error occurred. Please try again.');
+    }
+  };
+
+  const handleButtonClick = () => {
+    formRef.current.requestSubmit();
+  };
+
   return (
     <Wrapper id="contact">
       <div className="lightBg">
@@ -20,17 +67,53 @@ export default function Contact() {
           </HeaderInfo>
           <div className="row" style={{ paddingBottom: "30px" }}>
             <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-              <Form>
+              <Form ref={formRef} onSubmit={handleSubmit}>
                 <label className="font13">First name:</label>
-                <input type="text" id="fname" name="fname" className="font20 extraBold" />
+                <input 
+                  type="text" 
+                  id="fname" 
+                  name="fname" 
+                  value={formData.fname}
+                  onChange={handleInputChange}
+                  className="font20 extraBold" 
+                />
                 <label className="font13">Email:</label>
-                <input type="text" id="email" name="email" className="font20 extraBold" />
+                <input 
+                  type="email" 
+                  id="email" 
+                  name="email" 
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  className="font20 extraBold" 
+                />
                 <label className="font13">Subject:</label>
-                <input type="text" id="subject" name="subject" className="font20 extraBold" />
-                <textarea rows="4" cols="50" type="text" id="message" name="message" className="font20 extraBold" />
+                <input 
+                  type="text" 
+                  id="subject" 
+                  name="subject" 
+                  value={formData.subject}
+                  onChange={handleInputChange}
+                  className="font20 extraBold" 
+                />
+                <label className="font13">Message:</label>
+                <textarea 
+                  rows="4" 
+                  cols="50" 
+                  id="message" 
+                  name="message" 
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  className="font20 extraBold" 
+                />
               </Form>
               <SumbitWrapper className="flex">
-                <ButtonInput type="submit" value="Send Message" className="pointer animate radius8" style={{ maxWidth: "220px" }} />
+                <ButtonInput 
+                  type="button" 
+                  value="Send Message" 
+                  onClick={handleButtonClick}
+                  className="pointer animate radius8" 
+                  style={{ maxWidth: "220px" }} 
+                />
               </SumbitWrapper>
             </div>
             <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 flex">
