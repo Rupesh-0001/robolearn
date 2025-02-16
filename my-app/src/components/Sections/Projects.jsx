@@ -4,8 +4,8 @@ import styled from "styled-components";
 import ProjectBox from "../Elements/ProjectBox";
 import FullButton from "../Buttons/FullButton";
 // Assets
-import ProjectImg1 from "../../assets/img/svgs/zerotohero.svg";
-import ProjectImg2 from "../../assets/img/svgs/hero100.svg";
+import ProjectImg1 from "../../assets/img/svgs/zerotoone.png";
+import ProjectImg2 from "../../assets/img/svgs/onetohundred.png";
 import ProjectImg3 from "../../assets/img/projects/3.png";
 import ProjectImg4 from "../../assets/img/projects/4.png";
 import ProjectImg5 from "../../assets/img/projects/5.png";
@@ -16,15 +16,14 @@ import AddImage2 from "../../assets/img/add/add2.png";
 export default function Projects() {
   return (
     <Wrapper id="projects">
-      <div className="lightBg" style={{ padding: "30px 0" }}>
+      <div className="whiteBg" style={{ padding: "30px 0" }}>
         <div className="container">
           <HeaderInfo>
             <h1 className="font40 extraBold">Our Way Of Shaping Future</h1>
             <p className="font13">
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+              The future belongs to innovators. Whether you're taking your first step into robotics or pushing the limits of automation,  
               <br />
-              labore et dolore magna aliquyam erat, sed diam voluptua. <br />
-              Teji Give Content
+              our courses are designed to equip you with the skills to create, build, and lead in the world of technology.
             </p>
           </HeaderInfo>
           <div className="row textCenter">

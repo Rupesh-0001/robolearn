@@ -1,5 +1,7 @@
 import React, { useState, useRef } from "react";
 import styled from "styled-components";
+import { toast } from "react-toastify";
+
 // Assets
 import ContactImg1 from "../../assets/img/svgs/study.svg";
 import ContactImg2 from "../../assets/img/svgs/tutorial.svg";
@@ -25,27 +27,25 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    // Replace with your Google Sheet Web App URL
-    const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbxOpR6B3iMLuWZ1QgLhKiI6pRkGfnMT9y0jpHnfYo4jlbY2Lf6SK7AXdRaNU0N6C-Kz/exec';
-    
+    const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbyNAc8UQfhJV5oYmLYmK_Xwg7gxolsbGqISL7fBAr_ZJQXT_qIVp0_Gc4p3Zjf7IMa-/exec';
+  
     try {
       const response = await fetch(GOOGLE_SHEET_URL, {
         method: 'POST',
+        mode: 'no-cors', // Bypasses CORS policy
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(formData)
       });
-      
-      if (response.ok) {
-        alert('Message sent successfully!');
-        setFormData({ fname: '', email: '', subject: '', message: '' });
-      } else {
-        alert('Failed to send message. Please try again.');
-      }
+  
+      toast.success('Message sent successfully!');
+  
+      setFormData({ fname: '', email: '', subject: '', message: '' });
+  
     } catch (error) {
       console.error('Error:', error);
-      alert('An error occurred. Please try again.');
+      toast.error('An error occurred. Please try again.');
     }
   };
 
@@ -55,14 +55,14 @@ export default function Contact() {
 
   return (
     <Wrapper id="contact">
-      <div className="lightBg">
+      <div className="whiteBg">
         <div className="container">
           <HeaderInfo>
             <h1 className="font40 extraBold">Let's get in touch</h1>
             <p className="font13">
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
-              <br />
-              labore et dolore magna aliquyam erat, sed diam voluptua.
+            Got questions, ideas, or just want to geek out about robots?<br />
+            We'd love to hear from you! Whether you're a curious beginner, a tech enthusiast, or a future innovator, let's connect and build something awesome together.<br />
+            Drop us a message - because every great invention starts with a conversation! 🚀
             </p>
           </HeaderInfo>
           <div className="row" style={{ paddingBottom: "30px" }}>
@@ -77,7 +77,7 @@ export default function Contact() {
                   onChange={handleInputChange}
                   className="font20 extraBold" 
                 />
-                <label className="font13">Email:</label>
+                <label className="font13">Your Email:</label>
                 <input 
                   type="email" 
                   id="email" 

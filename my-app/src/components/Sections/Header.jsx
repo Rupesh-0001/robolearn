@@ -3,7 +3,7 @@ import styled from "styled-components";
 // Components
 import FullButton from "../Buttons/FullButton";
 // Assets
-import HeaderImage from "../../assets/img/svgs/robotics.svg";
+import HeaderImage from "../../assets/gifs/VR.gif";
 import QuotesIcon from "../../assets/svg/Quotes";
 import Dots from "../../assets/svg/Dots";
 
@@ -14,7 +14,7 @@ export default function Header() {
         <div>
           <h1 className="extraBold font60">Ignite Minds, Shape Futures!</h1>
           <HeaderP className="font13 semiBold">
-          Building Future and Empowering the next generation of Creators and Innovators. Welcome to the world of Endless Possibilities with RoboLearn!
+          Welcome to RoboLearn - where creativity meets technology, and possibilities are limitless. Join us in building a smarter, brighter future by equipping the next generation with the skills to create, innovate, and lead!
           </HeaderP>
           <BtnWrapper>
             <FullButton title="Get Started" />
@@ -30,9 +30,9 @@ export default function Header() {
             </QuotesWrapper>
             <div>
               <p className="font15 whiteColor">
-                <em>Need Content for here Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos</em>
+                <em>Building Future and Empowering the next generation of Creators and Innovators.</em>
               </p>
-              <p className="font13 orangeColor textRight" style={{marginTop: '10px'}}>Tech Team.</p>
+              <p className="font13 orangeColor textRight" style={{marginTop: '10px'}}>RoboLearn</p>
             </div>
           </QuoteWrapper>
           <DotsWrapper>
