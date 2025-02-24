@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-scroll";
+import { Link as RouterLink } from "react-router-dom";
 // Components
 import Sidebar from "../Nav/Sidebar";
 import Backdrop from "../Elements/Backdrop";
@@ -26,17 +27,28 @@ export default function TopNavbar() {
       {sidebarOpen && <Backdrop toggleSidebar={toggleSidebar} />}
       <Wrapper className="flexCenter animate whiteBg" style={y > 100 ? { height: "60px" } : { height: "80px" }}>
         <NavInner className="container flexSpaceCenter">
-          <Link className="pointer flexNullCenter" to="home" smooth={true}>
+        <RouterLink to="/" onClick={(e) => {
+          const element = document.getElementById('home');
+          if (element) {
+            e.preventDefault();
+            element.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+          }
+        }}>
+          <div className="pointer flexNullCenter">
             <LogoIcon />
-          </Link>
+          </div>
+        </RouterLink>
           <BurderWrapper className="pointer" onClick={() => toggleSidebar(!sidebarOpen)}>
             <BurgerIcon />
           </BurderWrapper>
           <UlWrapper className="flexNullCenter">
             <li className="semiBold font15 pointer">
-              <Link activeClass="active" style={{ padding: "10px 15px" }} to="home" spy={true} smooth={true} offset={-80}>
+              <RouterLink to="/" style={{ padding: "10px 15px" }} onClick={() => {
+                const element = document.getElementById('home');
+                element.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+              }}>
                 Home
-              </Link>
+              </RouterLink>
             </li>
             {/* <li className="semiBold font15 pointer">
               <Link activeClass="active" style={{ padding: "10px 15px" }} to="services" spy={true} smooth={true} offset={-80}>

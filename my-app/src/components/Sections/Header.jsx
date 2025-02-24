@@ -6,6 +6,7 @@ import FullButton from "../Buttons/FullButton";
 import HeaderImage from "../../assets/gifs/VR.gif";
 import QuotesIcon from "../../assets/svg/Quotes";
 import Dots from "../../assets/svg/Dots";
+import { Link as RouterLink } from 'react-router-dom';
 
 export default function Header() {
   return (
@@ -17,7 +18,9 @@ export default function Header() {
           Welcome to RoboLearn - where creativity meets technology, and possibilities are limitless. Join us in building a smarter, brighter future by equipping the next generation with the skills to create, innovate, and lead!
           </HeaderP>
           <BtnWrapper>
-            <FullButton title="Get Started" />
+            <RouterLink to="/explore">
+              <FullButton title="Get Started" />
+            </RouterLink>
           </BtnWrapper>
         </div>
       </LeftSide>

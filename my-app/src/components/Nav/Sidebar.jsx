@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "react-scroll";
+import { Link as ScrollLink } from "react-scroll";
 // Assets
 import CloseIcon from "../../assets/svg/CloseIcon";
 import LightLogoImg from "../../assets/svg/LightLogo";
+import { Link as RouterLink } from 'react-router-dom';
 
 export default function Sidebar({ sidebarOpen, toggleSidebar }) {
   return (
@@ -22,7 +23,7 @@ export default function Sidebar({ sidebarOpen, toggleSidebar }) {
 
       <UlStyle className="flexNullCenter flexColumn">
         <li className="semiBold font15 pointer">
-          <Link
+          <ScrollLink
             onClick={() => toggleSidebar(!sidebarOpen)}
             activeClass="active"
             className="whiteColor"
@@ -33,7 +34,7 @@ export default function Sidebar({ sidebarOpen, toggleSidebar }) {
             offset={-60}
           >
             Home
-          </Link>
+          </ScrollLink>
         </li>
         {/* <li className="semiBold font15 pointer">
           <Link
@@ -50,7 +51,7 @@ export default function Sidebar({ sidebarOpen, toggleSidebar }) {
           </Link>
         </li> */}
         <li className="semiBold font15 pointer">
-          <Link
+          <ScrollLink
             onClick={() => toggleSidebar(!sidebarOpen)}
             activeClass="active"
             className="whiteColor"
@@ -61,7 +62,7 @@ export default function Sidebar({ sidebarOpen, toggleSidebar }) {
             offset={-60}
           >
             Projects
-          </Link>
+          </ScrollLink>
         </li>
         {/* <li className="semiBold font15 pointer">
           <Link
@@ -78,7 +79,7 @@ export default function Sidebar({ sidebarOpen, toggleSidebar }) {
           </Link>
         </li> */}
         <li className="semiBold font15 pointer">
-          <Link
+          <ScrollLink
             onClick={() => toggleSidebar(!sidebarOpen)}
             activeClass="active"
             className="whiteColor"
@@ -89,10 +90,10 @@ export default function Sidebar({ sidebarOpen, toggleSidebar }) {
             offset={-60}
           >
             Pricing
-          </Link>
+          </ScrollLink>
         </li>
         <li className="semiBold font15 pointer">
-          <Link
+          <ScrollLink
             onClick={() => toggleSidebar(!sidebarOpen)}
             activeClass="active"
             className="whiteColor"
@@ -103,19 +104,19 @@ export default function Sidebar({ sidebarOpen, toggleSidebar }) {
             offset={-60}
           >
             Contact
-          </Link>
+          </ScrollLink>
         </li>
       </UlStyle>
       <UlStyle className="flexSpaceCenter">
-        <li className="semiBold font15 pointer">
+        {/* <li className="semiBold font15 pointer">
           <a href="/" style={{ padding: "10px 30px 10px 0" }} className="whiteColor">
             Log in
           </a>
-        </li>
+        </li> */}
         <li className="semiBold font15 pointer flexCenter">
-          <a href="/" className="radius8 lightBg" style={{ padding: "10px 15px" }}>
+          <RouterLink to="/explore" className="radius8 lightBg" style={{ padding: "10px 15px" }}>
             Get Started
-          </a>
+          </RouterLink>
         </li>
       </UlStyle>
     </Wrapper>
