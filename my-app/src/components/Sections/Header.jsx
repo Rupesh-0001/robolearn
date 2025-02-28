@@ -38,9 +38,6 @@ export default function Header() {
               <p className="font13 orangeColor textRight" style={{marginTop: '10px'}}>RoboLearn</p>
             </div>
           </QuoteWrapper>
-          <DotsWrapper>
-            <Dots />
-          </DotsWrapper>
         </ImageWrapper>
       </RightSide>
     </Wrapper>
