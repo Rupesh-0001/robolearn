@@ -5,7 +5,7 @@ export default function Explore() {
     return (
       <>
         <TopNavbar />
-        <h1>Explore</h1>
+        <h1>Explorer</h1>
       </>
     );
   }
