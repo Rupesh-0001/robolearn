@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import HeaderImage from "../../assets/gifs/zeroToOne.gif";
 import ProjectBox from "../Elements/ProjectBox";
@@ -16,6 +16,7 @@ export default function Header() {
   const [phoneError, setPhoneError] = useState('');
   const [isAuthorized, setIsAuthorized] = useState(true);
   const [name, setName] = useState('');
+  const [showFloatingDiv, setShowFloatingDiv] = useState(true);
 
   const tabContent = [
     {
@@ -200,6 +201,28 @@ export default function Header() {
     registrationForm?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setShowFloatingDiv(!entry.isIntersecting);
+      },
+      {
+        threshold: 0.1
+      }
+    );
+
+    const registrationForm = document.querySelector('#registrationForm');
+    if (registrationForm) {
+      observer.observe(registrationForm);
+    }
+
+    return () => {
+      if (registrationForm) {
+        observer.unobserve(registrationForm);
+      }
+    };
+  }, []);
+
   return (
     <>
       <Wrapper id="home" className="container flexSpaceCenter" style={{ marginTop: "0px" }}>
@@ -291,15 +314,17 @@ export default function Header() {
           </RegisterationForm>
         </RightSide>
       </Wrapper>
-      <FloatingDiv onClick={scrollToRegistration}>
-        <div>
-          <div className="font-bold text-lg" style={{ marginBottom: "3px" }}>Free</div>
-          <div style={{ fontSize: "12px" }}>Limited Seats Available</div>
-        </div>
-        <div className="flex items-center">
-          Register Now <span style={{ marginLeft: "5px" }}>&gt;</span>
-        </div>
-      </FloatingDiv>
+      {showFloatingDiv && (
+        <FloatingDiv onClick={scrollToRegistration}>
+          <div>
+            <div className="font-bold text-lg" style={{ marginBottom: "3px" }}>Free</div>
+            <div style={{ fontSize: "12px" }}>Limited Seats Available</div>
+          </div>
+          <div className="flex items-center">
+            Register Now <span style={{ marginLeft: "5px" }}>&gt;</span>
+          </div>
+        </FloatingDiv>
+      )}
     </>
   );
 }
@@ -320,11 +345,10 @@ const LeftSide = styled.div`
   @media (max-width: 960px) {
     width: 100%;
     order: 1;
-    margin: 25px 0;
-    text-align: center;
+    margin: 20px 0 15px;
   }
   @media (max-width: 560px) {
-    margin: 80px 0 50px 0;
+    margin: 20px 0 20px 0;
   }
 `;
 const RightSide = styled.div`
@@ -335,6 +359,8 @@ const RightSide = styled.div`
     width: 100%;
     order: 2;
     margin-top: 30px;
+    margin-left: 0;
+    margin-bottom: 20px;
   }
 `;
 const HeaderP = styled.div`
@@ -342,7 +368,6 @@ const HeaderP = styled.div`
   line-height: 1.5rem;
   @media (max-width: 960px) {
     padding: 15px 0 50px 0;
-    text-align: center;
     max-width: 100%;
   }
 `;
@@ -458,6 +483,14 @@ const ContentContainer = styled.div`
   border-radius: 8px;
   min-height: 120px;
   line-height: 1.6;
+  
+  @media (max-width: 960px) {
+    text-align: left;
+    
+    h1, p {
+      text-align: left;
+    }
+  }
 `;
 const RegisterationForm = styled.div`
   width: 100%;
@@ -567,7 +600,7 @@ const FloatingDiv = styled.div`
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   z-index: 1000;
-  width: 90%;
+  width: 95%;
   max-width: 400px;
   justify-content: space-between;
   align-items: center;
