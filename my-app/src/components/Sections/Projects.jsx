@@ -1,17 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-// Components
 import ProjectBox from "../Elements/ProjectBox";
-import FullButton from "../Buttons/FullButton";
-// Assets
 import ProjectImg1 from "../../assets/img/svgs/zerotoone.png";
 import ProjectImg2 from "../../assets/img/svgs/onetohundred.png";
-import ProjectImg3 from "../../assets/img/projects/3.png";
-import ProjectImg4 from "../../assets/img/projects/4.png";
-import ProjectImg5 from "../../assets/img/projects/5.png";
-
-import ProjectImg6 from "../../assets/img/projects/6.png";
-import AddImage2 from "../../assets/img/add/add2.png";
 
 export default function Projects() {
   return (
@@ -21,7 +12,7 @@ export default function Projects() {
           <HeaderInfo>
             <h1 className="font40 extraBold">Our Way Of Shaping Future</h1>
             <p className="font13">
-              The future belongs to innovators. Whether you're taking your first step into robotics or pushing the limits of automation,  
+              The future belongs to innovators. Whether you're taking your first step into robotics or pushing the limits of automation,
               <br />
               our courses are designed to equip you with the skills to create, build, and lead in the world of technology.
             </p>
@@ -31,16 +22,16 @@ export default function Projects() {
               <ProjectBox
                 img={ProjectImg1}
                 title="ZERO - ONE"
+                hoverEnabled={true}
                 text="Unlock your potential with our beginner-friendly robotics course! Build, code, and bring your ideas to life - no experience needed. Explore how robotics shapes the future with just curiosity and passion!"
-                action={() => alert("clicked")}
               />
             </div>
             <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
               <ProjectBox
                 img={ProjectImg2}
                 title="ONE - HUNDRED"
+                hoverEnabled={true}
                 text="Master robotics with our professional-level course! Designed for experts ready to lead innovation, push boundaries, and shape the future of automation"
-                action={() => alert("clicked")}
               />
             </div>
           </div>
@@ -85,78 +76,5 @@ const Wrapper = styled.section`
 const HeaderInfo = styled.div`
   @media (max-width: 860px) {
     text-align: center;
-  }
-`;
-const Advertising = styled.div`
-  padding: 100px 0;
-  margin: 100px 0;
-  position: relative;
-  @media (max-width: 1160px) {
-    padding: 60px 0 40px 0;
-  }
-  @media (max-width: 860px) {
-    flex-direction: column;
-    padding: 0 0 30px 0;
-    margin: 80px 0 0px 0;
-  }
-`;
-const ButtonsRow = styled.div`
-  @media (max-width: 860px) {
-    justify-content: space-between;
-  }
-`;
-const AddLeft = styled.div`
-  position: relative;
-  width: 50%;
-  p {
-    max-width: 475px;
-  }
-  @media (max-width: 860px) {
-    width: 80%;
-    order: 2;
-    text-align: center;
-    h2 {
-      line-height: 3rem;
-      margin: 15px 0;
-    }
-    p {
-      margin: 0 auto;
-    }
-  }
-`;
-const AddRight = styled.div`
-  width: 50%;
-  @media (max-width: 860px) {
-    width: 80%;
-    order: 2;
-  }
-`;
-const AddLeftInner = styled.div`
-  width: 100%;
-  position: absolute;
-  top: -300px;
-  left: 0;
-  @media (max-width: 1190px) {
-    top: -250px;
-  }
-  @media (max-width: 920px) {
-    top: -200px;
-  }
-  @media (max-width: 860px) {
-    order: 1;
-    position: relative;
-    top: -60px;
-    left: 0;
-  }
-`;
-const ImgWrapper = styled.div`
-  width: 100%;
-  padding: 0 15%;
-  img {
-    width: 100%;
-    height: auto;
-  }
-  @media (max-width: 400px) {
-    padding: 0;
   }
 `;

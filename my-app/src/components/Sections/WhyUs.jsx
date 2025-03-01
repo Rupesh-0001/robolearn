@@ -2,22 +2,14 @@ import React from "react";
 import styled from "styled-components";
 // Components
 import ProjectBox from "../Elements/ProjectBox";
-import FullButton from "../Buttons/FullButton";
-import LogoIcon from "../../assets/svg/TextLogo";
 
-// Assets
 import ProjectImg1 from "../../assets/WhyUs/1.png";
 import ProjectImg2 from "../../assets/WhyUs/2.png";
 import ProjectImg3 from "../../assets/svgs/WhyUs3.svg";
-import ProjectImg4 from "../../assets/img/projects/4.png";
-import ProjectImg5 from "../../assets/img/projects/5.png";
-
-import ProjectImg6 from "../../assets/img/projects/6.png";
-import AddImage2 from "../../assets/img/add/add2.png";
 
 export default function Projects() {
   return (
-    <Wrapper id="projects">
+    <Wrapper id="whyus">
       <div className="lightBg" style={{ padding: "30px 0" }}>
         <div className="container">
           <HeaderInfo>
@@ -33,18 +25,21 @@ export default function Projects() {
           <div className="row textCenter">
             <div className="col-xs-12 col-sm-4 col-md-4 col-lg-4">
               <ProjectBox
+              hoverEnabled={false}
                 img={ProjectImg1}
                 text="Breaking the traditional cycle of Studying."
               />
             </div>
             <div className="col-xs-12 col-sm-4 col-md-4 col-lg-4">
               <ProjectBox
+              hoverEnabled={false}
                 img={ProjectImg2}
                 text="Making youngsters industry ready."
               />
             </div>
             <div className="col-xs-12 col-sm-4 col-md-4 col-lg-4">
               <ProjectBox
+              hoverEnabled={false}
                 img={ProjectImg3}
                 text="Training young mind using real life live projects."
               />

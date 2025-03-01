@@ -9,7 +9,7 @@ import Backdrop from "../Elements/Backdrop";
 import LogoIcon from "../../assets/svg/Logo";
 import BurgerIcon from "../../assets/svg/BurgerIcon";
 
-export default function TopNavbar() {
+export default function TopNavbar({ showSubMenu = true }) {
   const [y, setY] = useState(window.scrollY);
   const [sidebarOpen, toggleSidebar] = useState(false);
 
@@ -23,18 +23,19 @@ export default function TopNavbar() {
 
   return (
     <>
-      <Sidebar sidebarOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
+      {showSubMenu && (<Sidebar sidebarOpen={sidebarOpen} toggleSidebar={toggleSidebar} />)}
       {sidebarOpen && <Backdrop toggleSidebar={toggleSidebar} />}
       <Wrapper className="flexCenter animate whiteBg" style={y > 100 ? { height: "60px" } : { height: "80px" }}>
-        <NavInner className="container flexSpaceCenter">
+        <NavInner className="container flexSpaceCenter" style={{ overflow: "hidden" }}>
         <RouterLink to="/" onClick={(e) => {
           const element = document.getElementById('home');
           if (element) {
-            e.preventDefault();
-            element.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+            setTimeout(() => {
+              element.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+            }, 10);
           }
         }}>
-          <div className="pointer flexNullCenter">
+          <div className="pointer flexNullCenter" style={{ overflow: "hidden" }}>
             <LogoIcon />
           </div>
         </RouterLink>
@@ -42,39 +43,41 @@ export default function TopNavbar() {
             <BurgerIcon />
           </BurderWrapper>
           <UlWrapper className="flexNullCenter">
-            <li className="semiBold font15 pointer">
+            {showSubMenu && (<li className="semiBold font15 pointer">
               <RouterLink to="/" style={{ padding: "10px 15px" }} onClick={() => {
                 const element = document.getElementById('home');
                 element.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
               }}>
                 Home
               </RouterLink>
-            </li>
-            {/* <li className="semiBold font15 pointer">
-              <Link activeClass="active" style={{ padding: "10px 15px" }} to="services" spy={true} smooth={true} offset={-80}>
-                Services
+            </li>)}
+           {showSubMenu && (<li className="semiBold font15 pointer">
+              <Link activeClass="active" style={{ padding: "10px 15px" }} to="whyus" spy={true} smooth={true} offset={-80}>
+                Why Us
               </Link>
-            </li> */}
-            <li className="semiBold font15 pointer">
-              <Link activeClass="active" style={{ padding: "10px 15px" }} to="projects" spy={true} smooth={true} offset={-80}>
-                Projects
-              </Link>
-            </li>
+            </li>)}
+            {showSubMenu && (
+              <li className="semiBold font15 pointer">
+                <Link activeClass="active" style={{ padding: "10px 15px" }} to="projects" spy={true} smooth={true} offset={-80}>
+                  Projects
+                </Link>
+              </li>
+            )}
             {/* <li className="semiBold font15 pointer">
               <Link activeClass="active" style={{ padding: "10px 15px" }} to="blog" spy={true} smooth={true} offset={-80}>
                 Blog
               </Link>
             </li> */}
-            <li className="semiBold font15 pointer">
+            {/* {showSubMenu && (<li className="semiBold font15 pointer">
               <Link activeClass="active" style={{ padding: "10px 15px" }} to="pricing" spy={true} smooth={true} offset={-80}>
                 Pricing
               </Link>
-            </li>
-            <li className="semiBold font15 pointer">
+            </li>)} */}
+            {showSubMenu && (<li className="semiBold font15 pointer">
               <Link activeClass="active" style={{ padding: "10px 15px" }} to="contact" spy={true} smooth={true} offset={-80}>
                 Contact
               </Link>
-            </li>
+            </li>)}
           </UlWrapper>
           {/* <UlWrapperRight className="flexNullCenter">
             <li className="semiBold font15 pointer">

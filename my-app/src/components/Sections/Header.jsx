@@ -5,7 +5,6 @@ import FullButton from "../Buttons/FullButton";
 // Assets
 import HeaderImage from "../../assets/gifs/VR.gif";
 import QuotesIcon from "../../assets/svg/Quotes";
-import Dots from "../../assets/svg/Dots";
 import { Link as RouterLink } from 'react-router-dom';
 
 export default function Header() {
@@ -19,7 +18,7 @@ export default function Header() {
           </HeaderP>
           <BtnWrapper>
             <RouterLink to="/explore">
-              <FullButton title="Get Started" />
+              <FullButton title="Explore Free Masterclass" />
             </RouterLink>
           </BtnWrapper>
         </div>

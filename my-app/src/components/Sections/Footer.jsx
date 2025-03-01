@@ -14,7 +14,7 @@ export default function Contact() {
     <Wrapper>
       <div className="darkBg">
         <div className="container">
-          <InnerWrapper className="flexSpaceCenter" style={{ padding: "30px 0" }}>
+          <InnerWrapper className="flexSpaceCenter" style={{ padding: "0" }}>
             <Link className="flexCenter animate pointer" to="home" smooth={true} offset={-80}>
               <LightLogoImg />
               {/* <h1 className="font15 extraBold whiteColor" style={{ marginLeft: "15px" }}>
