@@ -56,6 +56,20 @@ export default function Sidebar({ sidebarOpen, toggleSidebar }) {
             activeClass="active"
             className="whiteColor"
             style={{ padding: "10px 15px" }}
+            to="whyus"
+            spy={true}
+            smooth={true}
+            offset={-60}
+          >
+            Why Us
+          </ScrollLink>
+        </li>
+        <li className="semiBold font15 pointer">
+          <ScrollLink
+            onClick={() => toggleSidebar(!sidebarOpen)}
+            activeClass="active"
+            className="whiteColor"
+            style={{ padding: "10px 15px" }}
             to="projects"
             spy={true}
             smooth={true}
@@ -84,20 +98,6 @@ export default function Sidebar({ sidebarOpen, toggleSidebar }) {
             activeClass="active"
             className="whiteColor"
             style={{ padding: "10px 15px" }}
-            to="pricing"
-            spy={true}
-            smooth={true}
-            offset={-60}
-          >
-            Pricing
-          </ScrollLink>
-        </li>
-        <li className="semiBold font15 pointer">
-          <ScrollLink
-            onClick={() => toggleSidebar(!sidebarOpen)}
-            activeClass="active"
-            className="whiteColor"
-            style={{ padding: "10px 15px" }}
             to="contact"
             spy={true}
             smooth={true}
@@ -107,15 +107,15 @@ export default function Sidebar({ sidebarOpen, toggleSidebar }) {
           </ScrollLink>
         </li>
       </UlStyle>
-      <UlStyle className="flexSpaceCenter">
+      <UlStyle className="flexSpaceCenter" style={{ paddingTop: "0" }}>
         {/* <li className="semiBold font15 pointer">
           <a href="/" style={{ padding: "10px 30px 10px 0" }} className="whiteColor">
             Log in
           </a>
         </li> */}
-        <li className="semiBold font15 pointer flexCenter">
+        <li className="semiBold font15 pointer flexCenter" style={{ width: "100%" }}>
           <RouterLink to="/explore" className="radius8 lightBg" style={{ padding: "10px 15px" }}>
-            Get Started
+            Explore Free Classes
           </RouterLink>
         </li>
       </UlStyle>
@@ -124,7 +124,7 @@ export default function Sidebar({ sidebarOpen, toggleSidebar }) {
 }
 
 const Wrapper = styled.nav`
-  width: 400px;
+  width: 400px
   height: 100vh;
   position: fixed;
   top: 0;

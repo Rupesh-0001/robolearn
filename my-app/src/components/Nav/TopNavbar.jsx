@@ -39,9 +39,9 @@ export default function TopNavbar({ showSubMenu = true }) {
             <LogoIcon />
           </div>
         </RouterLink>
-          <BurderWrapper className="pointer" onClick={() => toggleSidebar(!sidebarOpen)}>
+          {showSubMenu && (<BurderWrapper className="pointer" onClick={() => toggleSidebar(!sidebarOpen)}>
             <BurgerIcon />
-          </BurderWrapper>
+          </BurderWrapper>)}
           <UlWrapper className="flexNullCenter">
             {showSubMenu && (<li className="semiBold font15 pointer">
               <RouterLink to="/" style={{ padding: "10px 15px" }} onClick={() => {

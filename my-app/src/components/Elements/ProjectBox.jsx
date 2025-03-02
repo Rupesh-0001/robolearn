@@ -8,8 +8,9 @@ export default function ProjectBox({ img, title, text, action, hoverEnabled = tr
         className="aniamte" 
         onClick={action ? () => action() : null}
         $hoverEnabled={hoverEnabled}
+        $height={height}
       >
-        <img className="radius8" style={{ height: height }} src={img} alt="project"></img>
+        <img className="radius8" src={img} alt="project"></img>
       </ImgBtn>
       <h3 className="font20 extraBold">{title}</h3>
       <p className="font13">{text}</p>
@@ -35,10 +36,20 @@ const ImgBtn = styled.button`
   outline: none;
   padding: 0px;
   margin: 0px;
+  img {
+    @media (max-width: 768px) {
+      width: 100px;
+      height: auto;
+    }
+    @media (min-width: 769px) {
+      height: ${props => props.$height || "180px"};
+      width: auto;
+    }
+  }
   ${props => props.$hoverEnabled && `
     :hover > img {
       opacity: 0.5;
     }
-      cursor: pointer;
+    cursor: pointer;
   `}
 `;

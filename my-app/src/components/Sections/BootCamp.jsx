@@ -7,6 +7,7 @@ import ProjectImg2 from "../../assets/gifs/industryTraining.gif";
 import ProjectImg3 from "../../assets/gifs/liveClass.gif";
 import ProjectImg4 from "../../assets/gifs/LifetimeCommunity.gif";
 import HelpImage from "../../assets/img/helpImage.jpg";
+import { toast } from "react-toastify";
 
 export default function Header() {
   const [activeTab, setActiveTab] = useState(0);
@@ -17,6 +18,7 @@ export default function Header() {
   const [isAuthorized, setIsAuthorized] = useState(true);
   const [name, setName] = useState('');
   const [showFloatingDiv, setShowFloatingDiv] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const tabContent = [
     {
@@ -131,7 +133,7 @@ export default function Header() {
               <h2 style={{ fontSize: "18px", lineHeight: "1.6" }}>
                 Message us on Whatsapp
               </h2>
-              <WhatsAppLink 
+              <WhatsAppLink
                 href="https://wa.me/9878555767"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -144,6 +146,45 @@ export default function Header() {
       )
     }
   ];
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbxDSoETsGNCiPqbGLHEDH8K1E9Ydtc6xqvO2neaTq3BqY5la0alVdVd_-VBvn04covU/exec';
+
+    const formData = {
+      name: name,
+      email: email,
+      phoneNumber: phone
+    };
+
+    try {
+      const response = await fetch(GOOGLE_SHEET_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData)
+      });
+
+      // Clear form
+      setName('');
+      setEmail('');
+      setPhone('');
+      setIsAuthorized(true);
+
+      // Show success message
+      toast.success('Registration successful!');
+
+    } catch (error) {
+      console.error('Error:', error);
+      toast.error('An error occurred. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -305,11 +346,17 @@ export default function Header() {
               </CheckboxContainer>
 
               <RegisterButton
-                type="submit"
-                disabled={!isFormValid()}
+                type="button"
+                disabled={!isFormValid() || isLoading}
+                onClick={handleSubmit}
               >
-                Register for masterclass for free
+                {isLoading ? 'Registering...' : 'Register for masterclass for free'}
               </RegisterButton>
+            </div>
+            <div style={{ width: "100%", display: "flex", justifyContent: "center", alignItems: "center", marginTop: "15px" }}>
+              <span style={{ fontSize: "16px", color: "#f97316", fontWeight: "semibold" }}>
+                50+ students have already registered!
+              </span>
             </div>
           </RegisterationForm>
         </RightSide>
@@ -355,12 +402,17 @@ const RightSide = styled.div`
   width: 35%;
   height: 100%;
   margin-left: 30px;
+  position: sticky;
+  top: 100px;
+  margin-bottom: 20px;
+
+  
   @media (max-width: 960px) {
     width: 100%;
     order: 2;
     margin-top: 30px;
     margin-left: 0;
-    margin-bottom: 20px;
+    position: static;
   }
 `;
 const HeaderP = styled.div`
@@ -563,13 +615,14 @@ const RegisterButton = styled.button`
   cursor: pointer;
   transition: all 0.3s ease;
   margin-top: 20px;
+  position: relative;
 
   &:hover:not(:disabled) {
     background-color: #1d4ed8;
   }
 
   &:disabled {
-    opacity: 0.5;
+    opacity: 0.7;
     cursor: not-allowed;
   }
 `;
