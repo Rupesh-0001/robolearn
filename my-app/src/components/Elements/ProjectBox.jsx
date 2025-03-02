@@ -13,7 +13,7 @@ export default function ProjectBox({ img, title, text, action, hoverEnabled = tr
         <img className="radius8" src={img} alt="project"></img>
       </ImgBtn>
       <h3 className="font20 extraBold">{title}</h3>
-      <p className="font13">{text}</p>
+      <p className="font13" style= {{ textAlign: "center" }}>{text}</p>
     </Wrapper>
   );
 }
