@@ -38,7 +38,7 @@ const ImgBtn = styled.button`
   margin: 0px;
   img {
     @media (max-width: 768px) {
-      width: 100px;
+      width: 180px;
       height: auto;
     }
     @media (min-width: 769px) {
