@@ -21,6 +21,9 @@ export default function ProjectBox({ img, title, text, action, hoverEnabled = tr
 const Wrapper = styled.div`
   width: 100%;
   margin-top: 30px;
+  @media (max-width: 768px) {
+    text-align: center;
+  }
   img {
     width: 100%;
     height: auto;
